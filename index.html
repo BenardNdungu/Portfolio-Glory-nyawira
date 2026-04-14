@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glory Nyawira | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<style>
+  :root {
+    --clay: #C8A882;
+    --terracotta: #B5693A;
+    --ivory: #FAF6EF;
+    --warm-dark: #1C1410;
+    --muted: #7A6A5A;
+    --card-bg: #FFFFFF;
+    --line: #E8DDD0;
+    --accent: #6B3E2E;
+    --soft-green: #8BA888;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--ivory);
+    color: var(--warm-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 5%;
+    background: rgba(250,246,239,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.08); }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem; font-weight: 500;
+    color: var(--muted); text-decoration: none;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--terracotta); }
+  .nav-cta {
+    background: var(--terracotta);
+    color: #fff !important;
+    padding: 0.5rem 1.2rem !important;
+    border-radius: 2rem;
+  }
+  .nav-cta:hover { background: var(--accent); color: #fff !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--warm-dark); transition: 0.3s; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 7rem 5% 4rem;
+    gap: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-shape {
+    position: absolute; right: -8%; top: 10%;
+    width: 52%; height: 80%;
+    background: linear-gradient(145deg, #E8D5BC 0%, #C8A882 60%, #B5693A 100%);
+    border-radius: 60% 40% 50% 50% / 40% 60% 40% 60%;
+    opacity: 0.22;
+    z-index: 0;
+  }
+  .hero-dots {
+    position: absolute; left: 3%; bottom: 12%;
+    width: 120px; height: 120px;
+    background-image: radial-gradient(var(--clay) 1.5px, transparent 1.5px);
+    background-size: 16px 16px;
+    opacity: 0.35;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-tag {
+    display: inline-block;
+    background: #F0E6D8;
+    color: var(--terracotta);
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.35rem 1rem; border-radius: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 600; line-height: 1.05;
+    color: var(--warm-dark);
+    margin-bottom: 0.6rem;
+  }
+  .hero-name em { color: var(--terracotta); font-style: italic; }
+  .hero-headline {
+    font-size: 1rem; color: var(--muted);
+    font-weight: 400; line-height: 1.6;
+    margin-bottom: 1.6rem; max-width: 480px;
+  }
+  .hero-intro {
+    font-size: 0.95rem; color: var(--warm-dark);
+    line-height: 1.8; max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+  .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--terracotta);
+    color: #fff; border: none;
+    padding: 0.85rem 2rem; border-radius: 3rem;
+    font-size: 0.88rem; font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--terracotta);
+    border: 2px solid var(--terracotta);
+    padding: 0.85rem 2rem; border-radius: 3rem;
+    font-size: 0.88rem; font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer; text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: var(--terracotta); color: #fff; transform: translateY(-2px); }
+  .btn-download {
+    background: var(--warm-dark);
+    color: #fff; border: none;
+    padding: 0.85rem 2rem; border-radius: 3rem;
+    font-size: 0.88rem; font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+  }
+  .btn-download:hover { background: #000; transform: translateY(-2px); }
+  .hero-visual {
+    position: relative; z-index: 1;
+    display: flex; justify-content: center;
+  }
+  .hero-card {
+    background: var(--card-bg);
+    border-radius: 2.5rem;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 320px;
+    animation: floatCard 5s ease-in-out infinite;
+  }
+  @keyframes floatCard {
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+  }
+  .hero-avatar {
+    width: 120px; height: 120px;
+    background: linear-gradient(135deg, var(--clay), var(--terracotta));
+    border-radius: 50%;
+    margin: 0 auto 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; font-weight: 600; color: #fff;
+    border: 4px solid var(--ivory);
+    box-shadow: 0 8px 24px rgba(181,105,58,0.3);
+  }
+  .hero-card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600;
+    color: var(--warm-dark);
+  }
+  .hero-card-role { font-size: 0.8rem; color: var(--muted); margin: 0.3rem 0 1.2rem; }
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0.8rem; margin-top: 1rem;
+  }
+  .stat-box {
+    background: var(--ivory);
+    border-radius: 1rem; padding: 0.8rem;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 600; color: var(--terracotta);
+  }
+  .stat-label { font-size: 0.7rem; color: var(--muted); }
+  .badge-row {
+    display: flex; justify-content: center; gap: 0.5rem;
+    margin: 1rem 0 0;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: #F0E6D8; color: var(--terracotta);
+    font-size: 0.68rem; font-weight: 600;
+    padding: 0.25rem 0.7rem; border-radius: 2rem;
+  }
+
+  /* ── SECTIONS COMMON ── */
+  section { padding: 5rem 5%; }
+  .section-tag {
+    display: inline-block;
+    background: #F0E6D8; color: var(--terracotta);
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.3rem 0.9rem; border-radius: 2rem;
+    margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600; line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+  .section-sub { font-size: 0.95rem; color: var(--muted); line-height: 1.7; max-width: 600px; margin-bottom: 3rem; }
+  .divider { width: 48px; height: 3px; background: var(--terracotta); margin: 1rem 0 2rem; border-radius: 2px; }
+
+  /* ── ABOUT ── */
+  #about { background: var(--card-bg); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.2fr;
+    gap: 4rem; align-items: start;
+  }
+  .about-left { position: sticky; top: 6rem; }
+  .about-img-block {
+    background: linear-gradient(145deg, #E8D5BC, #C8A882);
+    border-radius: 2rem; padding: 3rem 2rem;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .about-img-block::before {
+    content: '';
+    position: absolute; bottom: -20%; right: -10%;
+    width: 150px; height: 150px;
+    background: rgba(181,105,58,0.2);
+    border-radius: 50%;
+  }
+  .about-initials {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem; font-weight: 600; color: #fff;
+    text-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    position: relative; z-index: 1;
+  }
+  .about-name-card {
+    background: rgba(255,255,255,0.9);
+    border-radius: 1rem; padding: 1rem;
+    margin-top: 1.5rem;
+    position: relative; z-index: 1;
+  }
+  .about-name-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+  }
+  .about-name-card p { font-size: 0.78rem; color: var(--muted); }
+  .info-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+  .info-pill {
+    background: var(--ivory);
+    border: 1px solid var(--line);
+    border-radius: 2rem; padding: 0.3rem 0.8rem;
+    font-size: 0.72rem; color: var(--warm-dark);
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .info-pill i { color: var(--terracotta); }
+  .about-text p { font-size: 0.95rem; line-height: 1.9; color: #3A2E28; margin-bottom: 1.2rem; }
+  .about-goals {
+    background: linear-gradient(135deg, #F5ECE1, #FAF6EF);
+    border-left: 4px solid var(--terracotta);
+    border-radius: 0 1rem 1rem 0;
+    padding: 1.5rem 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .about-goals h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; margin-bottom: 0.6rem; color: var(--accent);
+  }
+  .about-goals p { font-size: 0.88rem; line-height: 1.8; color: var(--muted); }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--ivory); }
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .skill-card {
+    background: var(--card-bg);
+    border-radius: 1.5rem; padding: 2rem;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+    border: 1px solid var(--line);
+  }
+  .skill-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 600;
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .skill-card-title i { color: var(--terracotta); font-size: 1rem; }
+  .skill-item { margin-bottom: 1.1rem; }
+  .skill-label {
+    display: flex; justify-content: space-between;
+    font-size: 0.82rem; font-weight: 500;
+    margin-bottom: 0.4rem; color: var(--warm-dark);
+  }
+  .skill-pct { color: var(--terracotta); font-weight: 600; }
+  .skill-bar {
+    height: 6px; background: var(--line);
+    border-radius: 3px; overflow: hidden;
+  }
+  .skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--clay), var(--terracotta));
+    border-radius: 3px;
+    width: 0; transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  }
+  .tech-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.5rem; }
+  .tech-chip {
+    background: var(--ivory);
+    border: 1.5px solid var(--line);
+    border-radius: 2rem; padding: 0.4rem 1rem;
+    font-size: 0.78rem; font-weight: 500; color: var(--warm-dark);
+    display: flex; align-items: center; gap: 0.4rem;
+    transition: all 0.2s;
+  }
+  .tech-chip:hover { border-color: var(--terracotta); color: var(--terracotta); }
+  .tech-chip i { color: var(--terracotta); font-size: 0.75rem; }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--card-bg); }
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--terracotta), var(--clay), transparent);
+  }
+  .timeline-item {
+    position: relative; margin-bottom: 3rem;
+    animation: fadeInUp 0.6s ease both;
+  }
+  .timeline-dot {
+    position: absolute; left: -2.55rem; top: 0.4rem;
+    width: 18px; height: 18px;
+    background: var(--terracotta);
+    border-radius: 50%;
+    border: 3px solid var(--ivory);
+    box-shadow: 0 0 0 3px var(--terracotta);
+  }
+  .timeline-card {
+    background: var(--ivory);
+    border-radius: 1.5rem; padding: 1.8rem;
+    border: 1px solid var(--line);
+    transition: box-shadow 0.3s;
+  }
+  .timeline-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+  .timeline-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem; }
+  .timeline-company {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 600; color: var(--warm-dark);
+  }
+  .timeline-period {
+    background: #F0E6D8; color: var(--terracotta);
+    font-size: 0.72rem; font-weight: 600;
+    padding: 0.3rem 0.8rem; border-radius: 2rem;
+    white-space: nowrap;
+  }
+  .timeline-role { font-size: 0.85rem; color: var(--terracotta); font-weight: 500; margin-bottom: 1rem; }
+  .timeline-duties { list-style: none; }
+  .timeline-duties li {
+    font-size: 0.88rem; color: #3A2E28; line-height: 1.7;
+    padding: 0.3rem 0; padding-left: 1.2rem;
+    position: relative;
+  }
+  .timeline-duties li::before {
+    content: '→'; position: absolute; left: 0;
+    color: var(--clay); font-size: 0.8rem;
+  }
+  .achievement-box {
+    background: linear-gradient(135deg, var(--terracotta), var(--accent));
+    color: #fff; border-radius: 1rem;
+    padding: 0.9rem 1.2rem; margin-top: 1rem;
+    display: flex; align-items: center; gap: 0.7rem;
+    font-size: 0.82rem; line-height: 1.5;
+  }
+  .achievement-box i { font-size: 1.1rem; flex-shrink: 0; }
+
+  /* ── EDUCATION ── */
+  #education { background: var(--ivory); }
+  .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .edu-card {
+    background: var(--card-bg);
+    border-radius: 1.5rem; padding: 2rem;
+    border: 1px solid var(--line);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .edu-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.08); }
+  .edu-icon {
+    width: 52px; height: 52px;
+    background: linear-gradient(135deg, var(--clay), var(--terracotta));
+    border-radius: 1rem;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 1.3rem; margin-bottom: 1.2rem;
+  }
+  .edu-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 600; margin-bottom: 0.3rem;
+  }
+  .edu-school { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.8rem; }
+  .edu-year {
+    display: inline-block;
+    background: #F0E6D8; color: var(--terracotta);
+    font-size: 0.72rem; font-weight: 600;
+    padding: 0.25rem 0.7rem; border-radius: 2rem;
+  }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--card-bg); }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.8rem; }
+  .project-card {
+    background: var(--ivory);
+    border-radius: 1.5rem; padding: 2rem;
+    border: 1px solid var(--line);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+  .project-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); }
+  .project-icon {
+    width: 52px; height: 52px;
+    border-radius: 1rem; margin-bottom: 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; color: #fff;
+  }
+  .p-icon-1 { background: linear-gradient(135deg, #C8A882, #B5693A); }
+  .p-icon-2 { background: linear-gradient(135deg, #8BA888, #5A7A58); }
+  .p-icon-3 { background: linear-gradient(135deg, #A888B8, #6B4A7A); }
+  .project-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 600; margin-bottom: 0.8rem;
+  }
+  .project-section { margin-bottom: 0.8rem; }
+  .project-section-label {
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--terracotta);
+    margin-bottom: 0.25rem;
+  }
+  .project-section p { font-size: 0.82rem; color: #3A2E28; line-height: 1.7; }
+  .project-result {
+    background: linear-gradient(135deg, rgba(181,105,58,0.1), rgba(200,168,130,0.1));
+    border-radius: 0.8rem; padding: 0.8rem;
+    margin-top: 0.8rem;
+    border-left: 3px solid var(--terracotta);
+  }
+  .project-result p { font-size: 0.82rem; color: var(--accent); font-weight: 500; }
+
+  /* ── COMPETENCIES ── */
+  #competencies { background: var(--ivory); }
+  .comp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; }
+  .comp-card {
+    background: var(--card-bg);
+    border-radius: 1.2rem; padding: 1.5rem;
+    border: 1px solid var(--line);
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .comp-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(0,0,0,0.07); }
+  .comp-icon {
+    width: 48px; height: 48px;
+    background: linear-gradient(135deg, var(--clay), var(--terracotta));
+    border-radius: 50%; margin: 0 auto 0.8rem;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 1.1rem;
+  }
+  .comp-title { font-size: 0.88rem; font-weight: 600; color: var(--warm-dark); }
+
+  /* ── LANGUAGES ── */
+  #languages { background: var(--card-bg); }
+  .lang-grid { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .lang-card {
+    background: var(--ivory);
+    border-radius: 1.5rem; padding: 1.8rem 2.5rem;
+    border: 1px solid var(--line);
+    text-align: center; flex: 1; min-width: 160px;
+  }
+  .lang-flag { font-size: 2.5rem; margin-bottom: 0.5rem; }
+  .lang-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 600;
+  }
+  .lang-level { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
+  .lang-dots { display: flex; gap: 4px; justify-content: center; margin-top: 0.7rem; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot.filled { background: var(--terracotta); }
+  .dot.empty { background: var(--line); }
+
+  /* ── HIRE ME ── */
+  #hire {
+    background: var(--ivory);
+    text-align: center;
+    padding: 6rem 5%;
+  }
+  .hire-box {
+    background: linear-gradient(135deg, var(--terracotta), var(--accent));
+    border-radius: 2.5rem; padding: 4rem 3rem;
+    color: #fff; max-width: 700px; margin: 0 auto;
+    position: relative; overflow: hidden;
+  }
+  .hire-box::before {
+    content: '';
+    position: absolute; top: -40%; right: -10%;
+    width: 300px; height: 300px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 50%;
+  }
+  .hire-box h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem; font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .hire-box p { font-size: 0.95rem; line-height: 1.8; opacity: 0.9; margin-bottom: 2rem; }
+  .hire-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .hire-btn-white {
+    background: #fff; color: var(--terracotta);
+    padding: 0.85rem 2rem; border-radius: 3rem;
+    font-size: 0.88rem; font-weight: 700;
+    text-decoration: none; transition: 0.2s;
+    display: inline-block;
+  }
+  .hire-btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+  .hire-btn-ghost {
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.6);
+    color: #fff;
+    padding: 0.85rem 2rem; border-radius: 3rem;
+    font-size: 0.88rem; font-weight: 600;
+    text-decoration: none; transition: 0.2s;
+    display: inline-block;
+  }
+  .hire-btn-ghost:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--card-bg); }
+  .contact-items-row { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 1rem;
+    background: var(--ivory); border: 1px solid var(--line);
+    border-radius: 1.2rem; padding: 1.2rem 1.8rem;
+    flex: 1; min-width: 220px;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .contact-item:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.07); transform: translateY(-2px); }
+  .contact-icon {
+    width: 48px; height: 48px;
+    background: linear-gradient(135deg, var(--clay), var(--terracotta));
+    border-radius: 1rem; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 1rem;
+  }
+  .contact-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .contact-value { font-size: 0.92rem; font-weight: 500; color: var(--warm-dark); margin-top: 0.1rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--warm-dark); color: rgba(255,255,255,0.6);
+    padding: 2rem 5%; text-align: center;
+    font-size: 0.82rem;
+  }
+  footer a { color: var(--clay); text-decoration: none; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── MOBILE NAV ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--ivory); padding: 1.5rem 5%; border-bottom: 1px solid var(--line); gap: 1rem; }
+    .nav-links.open { display: flex; }
+    .hamburger { display: flex; }
+    #hero { grid-template-columns: 1fr; padding-top: 6rem; }
+    .hero-visual { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-left { position: static; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  /* Scroll top btn */
+  #scrollTop {
+    position: fixed; bottom: 2rem; right: 2rem;
+    width: 44px; height: 44px;
+    background: var(--terracotta); color: #fff;
+    border-radius: 50%; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s, transform 0.3s;
+    z-index: 99;
+  }
+  #scrollTop.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">G. Nyawira</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-shape"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-content">
+    <div class="hero-tag">✦ Available for Internships & Entry-Level Roles</div>
+    <h1 class="hero-name">Glory<br><em>Nyawira</em></h1>
+    <p class="hero-headline">Business Management Student &nbsp;·&nbsp; Customer Service & Sales Enthusiast</p>
+    <p class="hero-intro">Driven, customer-focused, and ready to make an impact. I bring hands-on retail and financial services experience, a passion for people, and the ambition to grow within dynamic business environments.</p>
+    <div class="btn-row">
+      <a href="#projects" class="btn-primary"><i class="fas fa-briefcase"></i>&nbsp; View My Work</a>
+      <a href="#contact" class="btn-outline"><i class="fas fa-paper-plane"></i>&nbsp; Contact Me</a>
+      <a href="CURRICULUM VITAE GLORY.docx" download="Glory_Nyawira_CV.docx" class="btn-download"><i class="fas fa-download"></i>&nbsp; Download CV</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="hero-avatar">GN</div>
+      <div class="hero-card-name">Glory Nyawira</div>
+      <div class="hero-card-role">Business Management Student</div>
+      <div class="hero-stats">
+        <div class="stat-box">
+          <div class="stat-num">2+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Languages</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Dedication</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">🏆</div>
+          <div class="stat-label">Award Winner</div>
+        </div>
+      </div>
+      <div class="badge-row">
+        <span class="badge">Customer Care</span>
+        <span class="badge">Sales</span>
+        <span class="badge">Finance</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-left reveal">
+      <div class="about-img-block">
+        <div class="about-initials">GN</div>
+        <div class="about-name-card">
+          <h3>Glory Nyawira</h3>
+          <p>Nairobi, Kenya</p>
+          <div class="info-pills">
+            <span class="info-pill"><i class="fas fa-graduation-cap"></i> KCA University</span>
+            <span class="info-pill"><i class="fas fa-flag"></i> Kenyan</span>
+            <span class="info-pill"><i class="fas fa-phone"></i> +254 740 122 899</span>
+            <span class="info-pill"><i class="fas fa-envelope"></i> glorynyawira5@gmail.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <div class="section-tag">About Me</div>
+      <h2 class="section-title">Passionate. Professional.<br>People-First.</h2>
+      <div class="divider"></div>
+      <p>My name is Glory Nyawira, and I believe that every customer interaction is an opportunity to build trust, solve problems, and make someone's day a little better. That conviction has shaped my entire professional journey — from the bustling aisles of Shoppers Marvel Mart to the financial advisory tables of Ardhi SACCO.</p>
+      <p>I am currently pursuing a Diploma in Business Management at KCA University, where I'm sharpening my understanding of finance, marketing, and organizational behavior. But my real classroom has always been the field — working directly with people, navigating challenges with a smile, and delivering results that matter.</p>
+      <p>I thrive in team environments, adapt quickly to change, and carry a strong sense of personal responsibility in every task I take on. Whether I'm reconciling cash at end of day, walking a prospective SACCO member through their loan options, or handling a frustrated customer with patience and empathy — I show up fully.</p>
+      <div class="about-goals">
+        <h4>🎯 Career Aspirations</h4>
+        <p>My goal is to grow into a business development or customer experience leadership role within a values-driven organization. I want to contribute to teams that are building meaningful products and services — and to keep learning every single day. I am specifically interested in opportunities in business operations, financial services, marketing, and customer success.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-tag">What I Bring</div>
+  <h2 class="section-title">Skills & Expertise</h2>
+  <div class="divider"></div>
+  <p class="section-sub">A blend of people-centered soft skills and practical technical competencies — built through real-world experience and continuous learning.</p>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-card-title"><i class="fas fa-heart"></i> Soft Skills</div>
+      <div class="skill-item">
+        <div class="skill-label"><span>Communication & Interpersonal Skills</span><span class="skill-pct">95%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label"><span>Customer Service & Care</span><span class="skill-pct">95%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label"><span>Teamwork & Collaboration</span><span class="skill-pct">90%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label"><span>Conflict Resolution</span><span class="skill-pct">88%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label"><span>Leadership & Team Management</span><span class="skill-pct">82%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label"><span>Time Management & Organization</span><span class="skill-pct">88%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label"><span>Adaptability & Problem-Solving</span><span class="skill-pct">90%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-title"><i class="fas fa-laptop-code"></i> Technical & Domain Skills</div>
+      <div style="margin-bottom:1.2rem;">
+        <p style="font-size:0.8rem;color:var(--muted);margin-bottom:0.8rem;">Tools & Software</p>
+        <div class="tech-chips">
+          <div class="tech-chip"><i class="fas fa-file-word"></i> MS Word</div>
+          <div class="tech-chip"><i class="fas fa-file-excel"></i> MS Excel</div>
+          <div class="tech-chip"><i class="fas fa-file-powerpoint"></i> MS PowerPoint</div>
+          <div class="tech-chip"><i class="fas fa-cash-register"></i> POS Systems</div>
+          <div class="tech-chip"><i class="fas fa-calculator"></i> Cash Handling</div>
+          <div class="tech-chip"><i class="fas fa-envelope"></i> Email & Scheduling</div>
+        </div>
+      </div>
+      <div style="margin-bottom:1.2rem;">
+        <p style="font-size:0.8rem;color:var(--muted);margin-bottom:0.8rem;">Business Domain Skills</p>
+        <div class="tech-chips">
+          <div class="tech-chip"><i class="fas fa-handshake"></i> Sales & Marketing</div>
+          <div class="tech-chip"><i class="fas fa-file-invoice-dollar"></i> Loan Appraisal</div>
+          <div class="tech-chip"><i class="fas fa-users"></i> Member Recruitment</div>
+          <div class="tech-chip"><i class="fas fa-chart-line"></i> Credit Analysis</div>
+          <div class="tech-chip"><i class="fas fa-boxes"></i> Stock Management</div>
+          <div class="tech-chip"><i class="fas fa-balance-scale"></i> Daily Reconciliation</div>
+          <div class="tech-chip"><i class="fas fa-user-tie"></i> Client Sensitization</div>
+          <div class="tech-chip"><i class="fas fa-shield-alt"></i> Compliance Awareness</div>
+        </div>
+      </div>
+      <div class="skill-item" style="margin-top:1rem;">
+        <div class="skill-label"><span>MS Office Suite</span><span class="skill-pct">88%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label"><span>Sales & Client Management</span><span class="skill-pct">85%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label"><span>Financial Document Processing</span><span class="skill-pct">80%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-tag">Career Journey</div>
+  <h2 class="section-title">Professional Experience</h2>
+  <div class="divider"></div>
+  <p class="section-sub">Two meaningful roles. Real responsibilities. Measurable impact. Here's where I've shown up and delivered.</p>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-company">Ardhi SACCO Society Ltd</div>
+            <div class="timeline-role">Sales, Marketing & Loan Appraisal Officer</div>
+          </div>
+          <span class="timeline-period">Jan 2026 – Present</span>
+        </div>
+        <ul class="timeline-duties">
+          <li>Market Ardhi SACCO's BOSA and FOSA products — including development loans, Biashara loans, and savings — to active members and prospective clients</li>
+          <li>Actively recruit new members by clearly communicating the benefits of joining, contributing directly to membership growth targets</li>
+          <li>Conduct client sensitization sessions on loan products, interest rates, repayment terms, and eligibility requirements in line with SACCO policies</li>
+          <li>Assist in loan appraisal and credit analysis — evaluating repayment ability using payslips, bank statements, and guarantor information</li>
+          <li>Verify and process loan application documents to ensure compliance with Ardhi SACCO credit policies and regulatory standards</li>
+        </ul>
+        <div class="achievement-box">
+          <i class="fas fa-star"></i>
+          <span><strong>Key Achievement:</strong> Contributed to sustained membership growth through effective outreach and consultative client engagement — building trust with both new and existing members.</span>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-company">Shoppers Marvel Mart</div>
+            <div class="timeline-role">Shop Attendant / Cashier / Customer Care Specialist</div>
+          </div>
+          <span class="timeline-period">Jan – Dec 2023</span>
+        </div>
+        <ul class="timeline-duties">
+          <li>Assisted customers with purchases, inquiries, and complaints — ensuring a consistently welcoming and efficient shopping experience</li>
+          <li>Managed point-of-sale operations including cash handling, stock checks, and daily reconciliations with accuracy and accountability</li>
+          <li>Supported the store team with merchandising and maintaining clean, organized, and safe working areas</li>
+          <li>Developed strong interpersonal and cultural sensitivity skills by working with a diverse customer base in a fast-paced retail environment</li>
+        </ul>
+        <div class="achievement-box">
+          <i class="fas fa-trophy"></i>
+          <span><strong>Key Achievement:</strong> Recognized by the Store Manager for excellence in customer service and outstanding teamwork during peak retail seasons.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-tag">Academic Background</div>
+  <h2 class="section-title">Education</h2>
+  <div class="divider"></div>
+  <div class="edu-grid">
+    <div class="edu-card reveal">
+      <div class="edu-icon"><i class="fas fa-university"></i></div>
+      <div class="edu-degree">Diploma in Business Management</div>
+      <div class="edu-school">KCA University (Kenya College of Accountancy), Nairobi</div>
+      <span class="edu-year">2024 – Present</span>
+      <p style="font-size:0.82rem;color:var(--muted);margin-top:0.8rem;line-height:1.6;">Studying core business disciplines including marketing, financial management, organizational behavior, and entrepreneurship.</p>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-icon"><i class="fas fa-laptop"></i></div>
+      <div class="edu-degree">MS Office Proficiency Certification</div>
+      <div class="edu-school">ACK St. Andrews School, Nairobi</div>
+      <span class="edu-year">Completed</span>
+      <p style="font-size:0.82rem;color:var(--muted);margin-top:0.8rem;line-height:1.6;">Proficient in Word, Excel, and PowerPoint — enabling effective document preparation, data management, and professional presentations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-tag">Portfolio Work</div>
+  <h2 class="section-title">Case Studies & Projects</h2>
+  <div class="divider"></div>
+  <p class="section-sub">Real challenges, real actions, real results — presented as mini case studies drawn from my professional experience.</p>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-icon p-icon-1"><i class="fas fa-star"></i></div>
+      <div class="project-title">Customer Service Excellence Case</div>
+      <div class="project-section">
+        <div class="project-section-label">🔴 Problem</div>
+        <p>A major retail location was experiencing inconsistent customer experiences, with shoppers frequently leaving without purchases due to long queues and inadequate assistance during peak hours.</p>
+      </div>
+      <div class="project-section">
+        <div class="project-section-label">⚡ Action</div>
+        <p>As cashier and customer care specialist at Shoppers Marvel Mart, I proactively greeted customers, pre-empted common complaints, and streamlined POS transactions by maintaining organized and fully stocked checkout stations. I also diplomatically de-escalated tense situations during rush periods.</p>
+      </div>
+      <div class="project-result">
+        <div class="project-section-label">✅ Result</div>
+        <p>Recognized by management for excellence in service delivery and named a top performer for teamwork during the busiest retail season — directly contributing to improved customer retention.</p>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-icon p-icon-2"><i class="fas fa-users"></i></div>
+      <div class="project-title">SACCO Member Acquisition Campaign</div>
+      <div class="project-section">
+        <div class="project-section-label">🔴 Problem</div>
+        <p>Ardhi SACCO needed to grow its membership base and increase uptake of BOSA and FOSA products among both existing members and the broader community.</p>
+      </div>
+      <div class="project-section">
+        <div class="project-section-label">⚡ Action</div>
+        <p>Led field marketing efforts including one-on-one outreach, group sensitization presentations, and clear communication of SACCO product benefits. Tailored messaging to individual financial situations to make joining feel accessible and worthwhile.</p>
+      </div>
+      <div class="project-result">
+        <div class="project-section-label">✅ Result</div>
+        <p>Successfully contributed to consistent membership growth targets through trust-based, consultative engagement — establishing a strong referral pipeline from satisfied members.</p>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-icon p-icon-3"><i class="fas fa-file-invoice-dollar"></i></div>
+      <div class="project-title">Loan Appraisal Support Initiative</div>
+      <div class="project-section">
+        <div class="project-section-label">🔴 Problem</div>
+        <p>Many loan applicants at Ardhi SACCO were submitting incomplete documentation, causing processing delays and frustration — and posing potential compliance risks for the organization.</p>
+      </div>
+      <div class="project-section">
+        <div class="project-section-label">⚡ Action</div>
+        <p>Developed a thorough pre-submission checklist process; guided members through required documents (payslips, bank statements, guarantor details), performed credit assessments, and flagged discrepancies before escalation — ensuring cleaner applications at submission.</p>
+      </div>
+      <div class="project-result">
+        <div class="project-section-label">✅ Result</div>
+        <p>Reduced incomplete submission rates and improved turnaround times for loan approvals — increasing member satisfaction and ensuring adherence to Ardhi SACCO's credit policies and regulatory standards.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETENCIES -->
+<section id="competencies">
+  <div class="section-tag">Core Strengths</div>
+  <h2 class="section-title">Core Competencies</h2>
+  <div class="divider"></div>
+  <div class="comp-grid">
+    <div class="comp-card reveal">
+      <div class="comp-icon"><i class="fas fa-heart"></i></div>
+      <div class="comp-title">Exceptional Customer Care</div>
+    </div>
+    <div class="comp-card reveal">
+      <div class="comp-icon"><i class="fas fa-comments"></i></div>
+      <div class="comp-title">Communication & Interpersonal</div>
+    </div>
+    <div class="comp-card reveal">
+      <div class="comp-icon"><i class="fas fa-balance-scale"></i></div>
+      <div class="comp-title">Conflict Resolution</div>
+    </div>
+    <div class="comp-card reveal">
+      <div class="comp-icon"><i class="fas fa-users"></i></div>
+      <div class="comp-title">Teamwork & Collaboration</div>
+    </div>
+    <div class="comp-card reveal">
+      <div class="comp-icon"><i class="fas fa-clock"></i></div>
+      <div class="comp-title">Time Management</div>
+    </div>
+    <div class="comp-card reveal">
+      <div class="comp-icon"><i class="fas fa-search"></i></div>
+      <div class="comp-title">Attention to Detail</div>
+    </div>
+    <div class="comp-card reveal">
+      <div class="comp-icon"><i class="fas fa-bolt"></i></div>
+      <div class="comp-title">Adaptability</div>
+    </div>
+    <div class="comp-card reveal">
+      <div class="comp-icon"><i class="fas fa-shield-alt"></i></div>
+      <div class="comp-title">Safety & Compliance Mindset</div>
+    </div>
+  </div>
+</section>
+
+<!-- LANGUAGES -->
+<section id="languages">
+  <div class="section-tag">Languages</div>
+  <h2 class="section-title">Communication Across Cultures</h2>
+  <div class="divider"></div>
+  <div class="lang-grid">
+    <div class="lang-card reveal">
+      <div class="lang-flag">🇬🇧</div>
+      <div class="lang-name">English</div>
+      <div class="lang-level">Fluent</div>
+      <div class="lang-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div>
+      </div>
+    </div>
+    <div class="lang-card reveal">
+      <div class="lang-flag">🇰🇪</div>
+      <div class="lang-name">Kiswahili</div>
+      <div class="lang-level">Fluent</div>
+      <div class="lang-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div>
+      </div>
+    </div>
+    <div class="lang-card reveal">
+      <div class="lang-flag">🌍</div>
+      <div class="lang-name">Meru</div>
+      <div class="lang-level">Conversational</div>
+      <div class="lang-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot empty"></div><div class="dot empty"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HIRE ME -->
+<section id="hire">
+  <div class="hire-box">
+    <h2>Let's Work Together</h2>
+    <p>I'm actively seeking internship opportunities and entry-level positions in business, customer experience, sales, and marketing. If you're looking for a passionate, reliable, and people-centered professional who's ready to contribute from day one — let's talk.</p>
+    <div class="hire-btns">
+      <a href="#contact" class="hire-btn-white">🤝 Hire Me</a>
+      <a href="mailto:glorynyawira5@gmail.com" class="hire-btn-ghost">📧 Send an Email</a>
+      <a href="CURRICULUM VITAE GLORY.docx" download="Glory_Nyawira_CV.docx" class="hire-btn-ghost"><i class="fas fa-download"></i> Download CV</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag">Get In Touch</div>
+  <h2 class="section-title">Contact Glory</h2>
+  <div class="divider"></div>
+  <p style="font-size:0.9rem;color:var(--muted);line-height:1.8;margin-bottom:2.5rem;max-width:560px;">Whether you have an internship opening, a project, or just want to connect — I'd love to hear from you. I'm always open to new opportunities and conversations.</p>
+  <div class="contact-items-row">
+    <div class="contact-item reveal">
+      <div class="contact-icon"><i class="fas fa-phone"></i></div>
+      <div>
+        <div class="contact-label">Phone</div>
+        <div class="contact-value">+254 740 122 899</div>
+      </div>
+    </div>
+    <div class="contact-item reveal">
+      <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+      <div>
+        <div class="contact-label">Email</div>
+        <div class="contact-value">glorynyawira5@gmail.com</div>
+      </div>
+    </div>
+    <div class="contact-item reveal">
+      <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+      <div>
+        <div class="contact-label">Location</div>
+        <div class="contact-value">Nairobi, Kenya</div>
+      </div>
+    </div>
+    <div class="contact-item reveal">
+      <div class="contact-icon"><i class="fas fa-clock"></i></div>
+      <div>
+        <div class="contact-label">Availability</div>
+        <div class="contact-value">Open to Internships & Full-Time</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Glory Nyawira &nbsp;·&nbsp; Business Management Student &nbsp;·&nbsp; Nairobi, Kenya</span></a></p>
+</footer>
+
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Nav scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    const btn = document.getElementById('scrollTop');
+    if (window.scrollY > 60) {
+      nav.classList.add('scrolled');
+      btn.classList.add('visible');
+    } else {
+      nav.classList.remove('scrolled');
+      btn.classList.remove('visible');
+    }
+  });
+
+  // Hamburger
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Skill bars
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width + '%';
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.skill-card').forEach(card => barObserver.observe(card));
+
+  // Smooth active nav link
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.style.color = '';
+      if (a.getAttribute('href') === '#' + current) {
+        a.style.color = 'var(--terracotta)';
+      }
+    });
+  });
+</script>
+</body>
+</html>
